@@ -1,0 +1,118 @@
+body{
+    font-family: "Noto Sans JP" "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+:root {
+    --padding:0px 0px 0px 30px;
+    --blankpadding:45px;
+    --titlefont:50px;
+
+    --mainfont:calc(var(--titlefont) * 0.5);
+}
+body{
+    background-color:#f9f9f9;
+}
+
+.main > *{
+    margin-top: var(--blankpadding);
+}
+.titleborder{
+    margin: 0px;
+    border-top: 5px dotted #202020;
+}
+
+.title{
+    margin: 0px 0px 0px 20px;
+    font-size: var(--titlefont);
+}
+
+.iconimage{
+    vertical-align: -50%;
+}
+
+.main{
+    margin: var(--padding);
+    font-size: var(--mainfont);
+
+}
+
+/* .tabsearchmethod {
+    
+} */
+
+.b_tabsearchmethod> label{
+    display: block;
+    margin: var(--padding);
+}
+
+/* .sametabmethod{
+
+} */
+
+.b_sametabmethod > label{
+    display: block;
+    margin: var(--padding);
+}
+
+.b_background > label{
+    display: block;
+    margin: var(--padding);
+}
+
+.s_bg{
+    display: inline-block;
+}
+
+.t_bg{
+    display: inline-block;
+}
+
+.s_bg0{
+    width: 20%;
+}
+
+.b_duplicatetabnotification > label{
+    display: block;
+    margin: var(--padding);
+}
+
+.b_overtabmethod > label{
+    display: block;
+    margin: var(--padding);
+}
+
+/* .b_tabsearchmethod> label, .b_sametabmethod > label{
+    
+} */
+/*  */
+.b_badgemethod > label{
+    display: block;
+    margin: var(--padding);
+}
+/*  */
+.b_groupmethod > label{
+    display: block;
+    margin: var(--padding);
+}
+
+.warning{
+    color:red !important;
+    padding-top: 5px;
+    margin: 0px;
+}
+.saveoption > *{
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+    border-color: currentColor;
+    border-radius: 40px;
+}
+
+.b_save{
+    background:rgb(129, 194, 129);
+}
+
+.b_reset{
+    background:rgb(212, 212, 212);
+}
+
+

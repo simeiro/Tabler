@@ -3,23 +3,490 @@
 }
 
 body {
-    width: 500px;
-    height: 100px;
+    /*文字のデザインM PLUS Rounded 1c*/
+    font-family: "Noto Sans JP" "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+    background-size: 100% 100%;
 }
 
-.header {
+/*=============== ヘッダー ===============*/
+header {
+    text-align: center;
     width: 100%;
-    height: 30px;
+    height: auto;
     background: linear-gradient(135deg, rgb(240, 180, 50), rgb(100, 200, 50));
 }
 
-/* shita追加分始まり */
-.searchWindow {
-    margin-left: 10px;
+header>* {
+    display: inline;
+    width: fit-content;
 }
 
-.searchTitle {
-    padding: 0px;
+.title {
+    font-family: serif;
+    font-size: 25px;
+    text-shadow: 3px 3px 3px grey;
+}
+
+.openconfig {
+    position: absolute;
+    background: url("/image/icon_config.svg") no-repeat 0px center;
+    background-size: 25px 25px;
+    width: 30px;
+    height: 30px;
+    right: 1;
+    top: 0;
+}
+
+/*=== URLリスト ===*/
+.URLList {
+    z-index: 10;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    margin: 0;
+}
+
+#URLListButton {
+    background: linear-gradient(to bottom, rgb(200, 200, 200) 0%, rgb(100, 100, 100) 100%);
+    color: #fff;
+    border-radius: 20px;
+}
+
+/*テキストエリア*/
+#textarea {
+    background-color: green;
+    padding: 0;
+    text-align: center;
+}
+
+#textarea>* {
+    display: inline;
+    width: 90%;
+    height: 170px;
+    margin-top: 5px;
+}
+
+/*コピーボタン*/
+#copyButton {
+    background-color: green;
+}
+
+#copyButton>button {
+    background: rgb(50, 150, 200);
+    position: relative;
+    justify-content: space-around;
+    align-items: center;
+    color: #040000;
+    padding: 3px;
+    margin: 3px;
+    transition: 0.3s ease-in-out;
+    z-index: 10;
+    border-left: solid 5px #0000004f;
+}
+
+/*=============== メイン ===============*/
+.main {
+    /*リョウガだよ*/
+    background-size: 300px 150px;
+    position: relative;
+    display: flex;
+}
+
+/*=============== 機能 ===============*/
+.option {
+    width: 50%;
+}
+
+.option>* {
+    margin-top: 15px;
+    height: 30px;
+}
+
+.option>*>h3 {
+    width: fit-content;
+    padding: 5px;
+    font-size: 12px;
+}
+
+/*========== タブ制限 ==========*/
+
+.check {
+    width: 100%;
+    display: inline-flex;
+}
+
+/* ボタンを表示するエリア*/
+.containerArea {
+    background-color: #ddd;
+    margin: auto;
+    width: 35px;
+    border-radius: 10%;
+    position: relative;
+}
+
+/*チェックボックス*/
+.containerArea input[type="checkbox"] {
+    display: none;
+}
+
+/*チェックボックスのラベル（標準）*/
+.containerArea label {
+    display: block;
+    box-sizing: border-box;
+    text-align: left;
+    border: 2px solid rgb(10, 70, 0);
+    border-radius: 3px;
+    line-height: 1;
+    height: 25px;
+    width: 35px;
+}
+
+/*移動BOX（標準）*/
+.containerArea #containerBox {
+    display: inline-block;
+    height: 21px;
+    width: 50%;
+    background: rgb(80, 250, 30);
+    transition: .4s;
+}
+
+/*ON側のチェックボックスの移動BOX（ONのとき）*/
+.containerArea #check:checked+label #containerBox {
+    /* BOXを右に移動*/
+    transform: translateX(100%);
+    background: #bf1d00;
+}
+
+/*========== 最大タブ数 ==========*/
+.maxTabNum {
+    width: 100%;
+    display: flex;
+}
+
+.tabRange {
+    -webkit-appearance: none;
+    pointer-events: auto;
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+    height: 22px;
+    width: 100px;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.tabRange::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    background: #ddd;
+}
+
+.tabRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 40px;
+    background: #fff;
+    box-shadow: -200px 0 0 200px rgb(80, 250, 50);
+    border: 2px solid #999;
+}
+
+.tabRange::-moz-range-track {
+    height: 40px;
+    background: #ddd;
+}
+
+.tabRange::-moz-range-thumb {
+    background: #fff;
+    height: 40px;
+    width: 20px;
+    border: 3px solid #999;
+    border-radius: 0 !important;
+    box-shadow: -200px 0 0 200px dodgerblue;
+    box-sizing: border-box;
+}
+
+.tabRange::-ms-fill-lower {
+    background: dodgerblue;
+}
+
+.tabRange::-ms-thumb {
+    background: #fff;
+    border: 2px solid #999;
+    height: 40px;
+    width: 20px;
+    box-sizing: border-box;
+}
+
+.tabRange::-ms-ticks-after {
+    display: none;
+}
+
+.tabRange::-ms-ticks-before {
+    display: none;
+}
+
+.tabRange::-ms-track {
+    background: #ddd;
+    color: transparent;
+    height: 40px;
+    border: none;
+}
+
+.tabRange::-ms-tooltip {
+    display: none;
+}
+
+#nowTabNum {
+    padding-top: 7px;
+    float: right;
+}
+
+/* 削除,グループ化ボタン--simeiro */
+
+/*========== グループ化 ==========*/
+.group {
+    width: 100%;
+    display: inline-flex;
+}
+
+/*ボタンを表示するエリア*/
+.containerArea2 {
+    background-color: #ddd;
+    margin: auto;
+    width: 35px;
+    border-radius: 10%;
+    position: relative;
+}
+
+/*チェックボックス*/
+.containerArea2 input[type="checkbox"] {
+    display: none;
+}
+
+/*チェックボックスのラベル（標準）*/
+.containerArea2 label {
+    display: block;
+    box-sizing: border-box;
+    text-align: left;
+    border: 2px solid rgb(10, 70, 30);
+    border-radius: 3px;
+    height: 25px;
+    width: 35px;
+}
+
+/*移動BOX（標準）*/
+.containerArea2 #containerBox2 {
+    display: inline-block;
+    height: 21px;
+    width: 50%;
+    background: rgb(80, 250, 50);
+    transition: .4s;
+}
+
+/*ON側のチェックボックスの移動BOX（ONのとき）*/
+.containerArea2 #tabGroup:checked+label #containerBox2 {
+    transform: translateX(100%);
+    background: #bf1d00;
+}
+
+.tabdelete {
+    width: 100%;
+}
+
+.deletetabs_button {
+    visibility: hidden;
+    min-width: 60px;
+    height: 20px;
+    color: #fff;
+    padding: auto;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background: rgb(100, 200, 50);
+    box-shadow:0 0 rgb(30, 100, 30);
+}
+
+.deletetabs_button:active {
+    background: rgb(100, 200, 50);
+    box-shadow:0 0 rgb(30, 100, 30);
+    top: 2.5px;
+    z-index: 1;
+}
+
+/* 削除,グループ化ボタン終了 */
+
+/*============ タブリスト ============*/
+.tabList {
+    width: 50%;
+    height: fit-content;
+    position: relative;
+    text-align: center;
+}
+
+#tabListTitle {
+    width: 100%;
+    height: 26px;
+    position: sticky;
+    padding-top: 2px;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(100, 100, 0);
+}
+
+#domains {
+    width: 100%;
+    height: 185px;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+    background-color: rgb(50, 50, 0);
+}
+
+#domains::-webkit-scrollbar {
+    width: 3px;
+}
+
+#domains::-webkit-scrollbar-track {
+    background-color: lightgray;
+}
+
+#domains::-webkit-scrollbar-thumb {
+    background-color: dimgray;
+}
+
+#domains>ul {
+    padding: 5px;
+    background: linear-gradient(to bottom, rgb(170, 255, 45) 0%, rgb(35, 140, 35) 100%);
+    color: #fff;
+    margin: 3px;
+    border-radius: 10px;
+}
+
+#domains>ul:hover {
+    background: linear-gradient(to bottom, rgb(140, 225, 15) 0%, rgb(5, 110, 5) 100%);
+    cursor: pointer;
+}
+
+#domains>ul>li {
+    list-style: none;
+    background-color: rgb(240, 240, 240);
+    color: black;
+    margin: 3px;
+    border-radius: 3px;
+}
+
+#domains>ul>li:hover {
+    background-color: rgb(210, 210, 210);
+}
+
+/* 検索窓-simeiro */
+.open-btn {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    z-index: 5;
+    background: #fff url("/image/icon_search.svg") no-repeat 5px center;
+    /*虫眼鏡アイコンを背景に表示*/
+    background-size: 10px 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/*========= 検索窓の設定 ===============*/
+/*==検索窓背景のエリア*/
+#search-wrap {
+    position: fixed;
+    /*固定配置にして*/
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /*最背面に設定*/
+    opacity: 0;
+    /*透過を0に*/
+    transition: all 0.4s;
+    /*transitionを使ってスムースに現れる*/
+    width: 100%;
+    height: 100vh;
+}
+
+/*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後の見た目*/
+#search-wrap.panelactive {
+    opacity: 1;
+    /*不透明に変更*/
+    z-index: 11;
+    /*全面に出現*/
+    background: #333;
+    /*中の要素を天地中央揃えにする設定*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*==検索窓のエリア*/
+
+#search-wrap .search-area {
+    display: none;
+    /*検索窓のエリアは、はじめ非表示*/
+}
+
+/*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後*/
+#search-wrap.panelactive .search-area {
+    display: block;
+    /*検索窓エリアを表示*/
+    width: 80%;
+    position: relative;
+}
+
+#search-wrap.result .search-area {
+    display: none;
+}
+
+/*==検索フォームの設定*/
+
+#search-wrap form {
+    position: relative;
+    height: 66px;
+}
+
+/*==テキスト入力とボタンinput共通設定*/
+#search-wrap input {
+    appearance: none;
+    /*SafariやChromeのデフォルト*/
+    outline: none;
+    cursor: pointer;
+    /*カーソルを指マークに*/
+    color: #fff;
+}
+
+/*テキスト入力input設定*/
+#search-wrap input[type="text"] {
+    width: 85%;
+    padding: 20px;
+    border: none;
+    border-bottom: 2px solid #666;
+    transition: all 0.5s;
+    letter-spacing: 0.05em;
+}
+
+#search-wrap input[type="text"]:focus {
+    background: #444;
+}
+
+/*ボタンinput設定*/
+#search-wrap input[type="submit"] {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    background: url("/image/icon_search.svg") no-repeat 15px center;
+    /*虫眼鏡アイコンを背景に表示*/
+    background-size: 25px 25px;
+    width: 60px;
+    height: 60px;
 }
 
 #inputSearch {
@@ -30,101 +497,64 @@ body {
     resize: none;
 }
 
+/*=======　閉じるための×ボタン　========*/
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+}
+
+.close-btn span {
+    display: inline-block;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: #fff;
+}
+
+/*×マーク*/
+.close-btn span:nth-of-type(1) {
+    top: 21px;
+    left: 16px;
+    transform: translateY(6px) rotate(-135deg);
+    width: 50%;
+}
+
+.close-btn span:nth-of-type(2) {
+    top: 32px;
+    left: 16px;
+    transform: translateY(-6px) rotate(135deg);
+    width: 50%;
+}
+
+/*結果の表示*/
 .result_select {
-    margin-top: 2px;
-    width: 90%;
-}
-
-
-.tabdelete{
-    padding-left:10px;
-    padding-top:3px;
-}
-
-.deletetabs_button{
-    margin-left:10px;
-}
-
-/* shita追加分終わり */
-
-#title {
-    text-align: center;
-}
-
-.h2_tabNum {
-    text-align: center;
-}
-
-.h3_title_url {
-    padding: 10px;
-}
-
-.textarea {
+    margin-top: 60px;
+    position: fixed;
+    /*固定配置にして*/
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /*最背面に設定*/
+    opacity: 0;
+    /*透過を0に*/
+    transition: all 0.4s;
+    /*transitionを使ってスムースに現れる*/
     width: 100%;
-    height: 250px;
-    text-align: center;
-    padding-bottom: 6px;
+    height: 80vh;
+    color: #FFF;
 }
 
-#txt {
-    width: 90%;
-    height: 100%;
+.result_select.active {
+    opacity: 1;
+    display: block;
+    z-index: 11;
+    background: #333;
 }
 
-.copy {
-    text-align: right;
-    padding: 10px;
-}
-
-.h3_maxTabNum {
-    padding: 0px 0px 0px 10px;
-}
-
-.group {
-    width: fit-content;
-    max-width: 90%;
-    margin: 10px;
-}
-
-#domains>ul {
-    background-color: rgb(240, 240, 240);
-    padding: 5px;
-    border: solid gray;
-}
-
-#domains>ul:hover {
-    background-color: rgb(230, 230, 230);
-    padding: 5px;
-    border: solid gray;
-    cursor: pointer;
-}
-
-.group {
-    width: fit-content;
-    max-width: 90%;
-    margin: 10px;
-}
-
-#domains>ul {
-    background-color: rgb(240, 240, 240);
-    padding: 5px;
-    border: solid gray;
-}
-
-#domains>ul:hover {
-    background-color: rgb(230, 230, 230);
-    padding: 5px;
-    border: solid gray;
-    cursor: pointer;
-}
-
-#domains>ul>li {
-    background-color: rgb(230, 230, 230);
-    margin-left: 15px;
-}
-
-#domains>ul>li:hover {
-    background-color: rgb(210, 210, 210);
-    margin-left: 15px;
-    cursor: pointer;
-}
+/*検索窓終了*/

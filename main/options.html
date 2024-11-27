@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Taber-設定</title>
+    <link rel="stylesheet" href="options.css">
+    <script src="jquery-3.6.3.min.js"></script>
+    <script src="options.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1 class = "title" ><img src="taber128.png" class = "iconimage">
+            Taber - 設定変更画面</h1>
+        <hr class ="titleborder">
+    </header>
+    <div class="main">
+        <div class = "tabsearchmethod">
+            タブ検索方法
+            <div class = "b_tabsearchmethod">
+                <label><input type = "radio" value = "0" name ="b_tsm" class ="b_tsm0" id="bTsm0">タイトル</input></label>
+                <label><input type = "radio" value = "1" name ="b_tsm" class ="b_tsm1" id="bTsm1">URL</input></label>
+                <label><input type = "radio" value = "2" name ="b_tsm" class ="b_tsm2" id="bTsm2">タイトルとURL</input></label>
+            </div>
+        </div>
+        <div class = "sametabmethod">
+            重複タブ検知方法
+            <div class = "b_sametabmethod">
+                <label><input type="radio" value = "0" name ="b_stm" class = "b_stm0" id="bStm0">タイトル</input></label>
+                <label><input type="radio" value = "1" name ="b_stm" class = "b_stm1" id="bStm1">URL</input></label>
+                <label><input type="radio" value = "2" name ="b_stm" class = "b_stm2" id="bStm2">タイトルとURL</input></label>
+            </div>
+        </div>
+        <div class = "background">
+            背景画像
+            <div class = "b_background">
+                <label><input type="radio" value = "0" name ="b_bg" class = "b_bg0" id="bBg0">ホワイト</input></label>
+                <label><input type="radio" value = "1" name ="b_bg" class = "b_bg1" id="bBg1">ブラック</input></label>
+                <label><input type="radio" value = "2" name ="b_bg" class = "b_bg2" id="bBg2">システムの設定に合わせる</input></label>
+                <label>
+                    <input type="radio" value = "3" name ="b_bg" class = "b_bg3" id="bBg3">RGB</input>
+                    <input type="color" class = "co_bg" id = "coBg0"></input>
+                </label>
+                <label><input type="radio" value = "4" name ="b_bg" class = "b_bg4" id="bBg4">マグロ</input></label>
+                <label>
+                    <input type="radio" value = "5" name ="b_bg" class = "b_bg5" id="bBg5">画像</input>
+                    <input type="file" value = "5" name ="i_bg0" class = "i_bg0" id="iBg0" accept="image/png, image/jpeg"></input>
+                    <!-- <img class = "test"src="" height="200" alt="画像のプレビュー" /> -->
+                </label>
+                <label class =imgsetting hidden>
+                    <div class = "s_bg">明るさ</div>
+                    <input type="range" class = "s_bg0" id="sBg0" min="0" max="100"><div class = "t_bg"></div></input>
+                    
+                </label>
+            </div>
+        </div>
+        <div class = "duplicatetabnotification">
+            重複タブ発生時処理
+            <div class = "b_duplicatetabnotification">
+                <label><input type="checkbox" class = "c_dtn0" id="cDtn0">重複タブ発生時通知を行います</input></label>
+                <label><input type="checkbox" class = "c_dtn1" id="cDtn1">古い重複タブを削除します</input></label>
+            </div>
+        </div>
+        <div class = "overtabethod">
+            上限超過時処理
+            <div class = "b_overtabmethod">
+                <label><input type="checkbox" class = "c_otm0" id="cOtm0">上限超過時通知を行います</input></label>
+                <label><input type="radio" value = "1" name ="b_otm" class = "b_otm1" id="bOtm1">空欄:設定募集中</input></label>
+                <label><input type="radio" value = "2" name ="b_otm" class = "b_otm2" id="bOtm2">空欄:設定募集中</input></label>
+            </div>
+        </div>
+        <div class = "badgemethod">
+            Tab数表示方法
+            <div class = "b_badgemethod">
+                <label><input type = "radio" value = "0" name="b_bm" class = "b_bm0" id = "bBm0">通常表示</input></label>
+                <label><input type = "radio" value = "1" name="b_bm" class = "b_bm1" id = "bBm1">残数表示</input></label>
+            </div>
+        </div>
+        <div class="groupmethod">
+            グループ化方法
+            <div class="b_groupmethod">
+                <label><input type="radio" value="0" name="b_gm" class="b_gm0" id="bGm0">色分けあり</input></label>
+                <label><input type="radio" value="1" name="b_gm" class="b_gm1" id="bGm1">色分けなし</input></label>
+            </div>
+        </div>
+        <div class="barrange">
+            バーの範囲
+            <input type="number" class = "n_br" id="nBr0">
+        </div>
+        <div class = "warning" id = "warning" hidden></div>
+        <div class = "saveoption" id ="saveOptions">
+            <button class = "b_save" id = "saveB">セーブ</button>
+            <button class = "b_reset" id = "resetB">リセット</button>
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+</body>
+
+</html>

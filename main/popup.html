@@ -1,46 +1,75 @@
 <!DOCTYPE HTML>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="popup.css">
-        <script src="popup.js"></script>
-    </head>
-    <body>
-        <header class="header">
-            <h1 id="title">TabCounter</h1>
-        </header>
-        <div class="main">
-            <h2 class="h2_tabNum">現在のウインドウのタブ数：<span id="numOfTabs"></span></h2>
-            <div class = "searchWindow">
-                <h3 class = "searchTitle"><nobr>タブ検索欄
-                    <input id = "inputSearch" input type="text"></input>
-                </nobr></h3>
-                <h3><nobr>結果
-                <select class = "result_select" id = "resultSelect"></select>
-                </nobr></h3>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="popup.css">
+    <script src="jquery-3.6.3.min.js"></script>
+    <script src="popup.js"></script>
+    <script src="animation.js"></script>
+    <script src="option.js"></script>
+    <!--- ブラウザの差異をなくす-->
+    <link rel="stylesheet" href="sanitaize.css">
+    <!--文字のデザイン-->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div>
+            <div class="openconfig" id="config"></div>
+        </div>
+        <h1 class="title">Taber</h1>
+        <div class="URLList">URLリスト
+            <button id="URLListButton">&ensp;開く&ensp;</button>
+            <div id="textarea"></div>
+            <div id="copyButton"></div>
+        </div>
+    </header>
+    <div class="main">
+        <div class=option>
+            <div class="group">
+                <h3 id="groupText">グループ化</h3>
+                <div class="containerArea2" id="makeImg2">
+                    <input type="checkbox" id="tabGroup"></input>
+                    <label for="tabGroup">
+                        <div id="containerBox2"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="check">
+                <h3 id="TabLimitText">タブ数制限</h3>
+                <div class="containerArea" id="makeImg">
+                    <input type="checkbox" id="check">
+                    <label for="check">
+                        <div id="containerBox"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="maxTabNum">
+                <h3>最大</h3>
+                <input type="range" class="tabRange" id="maxTabNum" value="" name="" min="1" max="50">
+                <span id="nowTabNum"></span>
+            </div>
+            <div class="tabdelete">
+                <h3 id="sameTabDelete">重複タブ:0個
+                    <button class="deletetabs_button" id="deleteTabsButton" disabled>削除済</button>
+                </h3>
             </div>
         </div>
-        <h3 class="h3_title_url">取得したタイトルとURL</h3>
-        <div class="textarea">
-            <textarea id="txt"></textarea>
-        </div>
-        <div class="copy">
-            <button id="copyButton">copy</button>
-        </div>
-        <h3 class="h3_maxTabNum">最大タブ数
-            <input type="number" id="maxTabNum">
-            <button id="maxTabNumButton">変更</button>
-            <input type="checkbox" id="check">
-        </h3>
-        <div class="group">タブリスト
-            <button id="group">開く</button>
+        <div class="tabList">
+            <h3 id="tabListTitle">タブリスト</h3>
             <div id="domains"></div>
-
         </div>
-            <div class = "tabdelete" >
-            <h3 id = "sameTabDelete">重複タブ:0個<button class = "deletetabs_button" id="deleteTabsButton" disabled>削除</button></h3>
-        </div>
+        <div class="open-btn"></div>
+        <div id="search-wrap">
+            <div class="close-btn"><span></span><span></span></div>
+            <div class="search-area">
+                <input type="text" id="inputSearch" value="" name="" placeholder="検索するタブ名">
+                <input type="submit" id="searchsubmit" value="">
+            </div><!--/search-area -->
+            <select class="result_select" id="resultSelect" size="10"></select>
+        </div><!-- /search-wrap -->
     </div>
 </body>
 

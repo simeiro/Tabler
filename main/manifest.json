@@ -1,5 +1,5 @@
 {
-    "name": "TabCounter",
+    "name": "Taber",
     "version": "1.0.0",
     "description": "開くタブの数を制限，現在のタブ数を表示，URLごとにタブをグループ化する．",
     "action": {
@@ -8,11 +8,16 @@
     "background": {
         "service_worker": "background.js"
     },
+    "options_page": "options.html",
     "permissions": [
         "activeTab",
         "tabs",
         "clipboardWrite",
-        "storage"
+        "storage",
+        "notifications"
     ],
+    "icons": {
+        "128": "taber128.png"
+    },
     "manifest_version": 3
 }
